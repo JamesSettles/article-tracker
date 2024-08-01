@@ -23,8 +23,16 @@ def upload_file():
             text = get_text_from_file(file)
             cleaned_text = clean_text(text)
             word_count = len(cleaned_text)
-            return f"The PDF contains {word_count} words."
-        print("No return")
+            return render_template_string('''
+            <!doctype html>
+            <title>Upload a PDF</title>
+            <h1>The PDF contains {{ word_count }} words.</h1>
+            <h2>Upload another PDF to count words</h2>
+            <form method=post enctype=multipart/form-data>
+              <input type=file name=file>
+              <input type=submit value=Upload>
+            </form>
+            ''', word_count=word_count)
     return '''
     <!doctype html>
     <title>Upload a PDF</title>
