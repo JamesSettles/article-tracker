@@ -1,19 +1,19 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from flask import Flask, request, render_template, redirect, url_for,flash, send_file
-from article_digestion.pdf_digestion_tools import *
-from statistics_generation.stat_generation_tools import *
 from datetime import datetime
 import base64
+import sys
+import os
+
+# importing local functions
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from article_digestion.pdf_digestion_tools import *
+from statistics_generation.stat_generation_tools import *
 
 ALLOWED_EXTENSIONS = {'pdf'}
 SAVE_FILE_NAME = "app/memory/article_memory.txt"
 
 app = Flask(__name__)
 app.secret_key = "super secret key" 
-
 
 def allowed_file(filename): # check if file has an allowed extension
     return '.' in filename and \
@@ -25,7 +25,6 @@ def upload_form():
 
 @app.route('/', methods=['POST'])
 def upload_file():
-    
     # Ingest data from upload.html
     date_submitted = convert_to_datetime(request.form['date_submitted'])
     author = request.form['author']

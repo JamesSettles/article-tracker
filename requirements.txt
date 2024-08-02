@@ -1,4 +1,3 @@
+flask
 pyinstaller
-subprocess
-webbrowser
-time
+pypdf

@@ -80,7 +80,7 @@ def generate_stats(memory_filename='app/memory/article_memory.txt')->dict:
 
 def create_stats_graph(stats:dict):
     """
-    Uses matplotlib to return a bar graph image based off of the stats. 
+    Uses matplotlib to create a bar graphs based off of the stats. 
     """
      # Create bar graphs
     fig, axs = plt.subplots(3, 1, figsize=(10, 15))
