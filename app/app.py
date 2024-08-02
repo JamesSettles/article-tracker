@@ -6,6 +6,7 @@ from flask import Flask, request, render_template, redirect, url_for,flash, send
 from article_digestion.pdf_digestion_tools import *
 from statistics_generation.stat_generation_tools import *
 from datetime import datetime
+import base64
 
 ALLOWED_EXTENSIONS = {'pdf'}
 SAVE_FILE_NAME = "app/memory/article_memory.txt"
@@ -62,8 +63,9 @@ def upload_file():
 def generate_statistics():
     stats = generate_stats()
     img = create_stats_graph(stats)
-    return send_file(img, mimetype='image/png')
-
+    
+    img_base64 = base64.b64encode(img.getvalue()).decode('utf-8')
+    return render_template('stats.html', image_data=img_base64)
 
 if __name__ == "__main__":
     app.run(debug=True)
