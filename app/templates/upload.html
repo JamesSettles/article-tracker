@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Article</title>
+</head>
+<body>
+    <h1>Upload an Article</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="file">Upload File:</label>
+        <input type="file" name="file" id="file" required>
+        <input type="submit" value="Upload"><br><br>
+        
+        
+
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" required><br><br>
+
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" required><br><br>
+
+        <label for="date_submitted">Date Submitted:</label>
+        <input type="date" name="date_submitted" id="date_submitted" required><br><br>
+
+        
+        
+    </form>
+
+    {% if page_count is not none and word_count is not none %}
+        <h2>Generated Data</h2>
+        <p>Page Count: {{ page_count }}</p>
+        <p>Word Count: {{ word_count }}</p>
+    {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+</body>
+</html>

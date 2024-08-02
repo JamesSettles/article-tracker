@@ -1,3 +1,7 @@
 /dist
 /build
 *.spec
+*.pdf
+_pycache_
+*pyc
+*.txt

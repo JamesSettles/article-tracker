@@ -4,7 +4,7 @@ import time
 
 def open_flask_app():
     # Start the Flask app in a new subprocess
-    subprocess.Popen(['python', 'article-digestion/app.py'])
+    subprocess.Popen(['python', 'app/app.py'])
     # Wait a few seconds to ensure the Flask app has started
     time.sleep(5)
     # Open the default web browser to the Flask app URL
