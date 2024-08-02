@@ -25,8 +25,12 @@
         
     </form>
 
+    <form action="{{ url_for('generate_statistics') }}" method="get">
+        <input type="submit" value="Generate Stats">
+    </form>
+
     {% if page_count is not none and word_count is not none %}
-        <h2>Generated Data</h2>
+        <h2>Article Data</h2>
         <p>Page Count: {{ page_count }}</p>
         <p>Word Count: {{ word_count }}</p>
     {% endif %}

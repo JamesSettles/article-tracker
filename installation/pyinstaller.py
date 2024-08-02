@@ -2,7 +2,7 @@
 import PyInstaller.__main__
 
 PyInstaller.__main__.run([
-    'article-digestion/open_flask.py',
+    'app/open_flask.py',
     '--onefile',
     '--windowed',
     '-n ArticleTracker',

@@ -4,4 +4,4 @@
 *.pdf
 _pycache_
 *pyc
-*.txt
+article_memory.txt

@@ -2,8 +2,9 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from flask import Flask, request, render_template, redirect, url_for,flash
+from flask import Flask, request, render_template, redirect, url_for,flash, send_file
 from article_digestion.pdf_digestion_tools import *
+from statistics_generation.stat_generation_tools import *
 from datetime import datetime
 
 ALLOWED_EXTENSIONS = {'pdf'}
@@ -56,6 +57,13 @@ def upload_file():
     else:
         flash("No file uploaded.")
         return redirect(request.url)
+
+@app.route('/generate_statistics')
+def generate_statistics():
+    stats = generate_stats()
+    img = create_stats_graph(stats)
+    return send_file(img, mimetype='image/png')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
